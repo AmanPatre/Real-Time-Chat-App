@@ -3,7 +3,7 @@ import socket from "socket.io-client";
 let socketinstance = null;
 
 const initializeSocket = (projectId) => {
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "https://real-time-chat-app-backend-mzzm.onrender.com";
   socketinstance = socket(API_BASE_URL, {
     auth: {
       token: localStorage.getItem("token"),
