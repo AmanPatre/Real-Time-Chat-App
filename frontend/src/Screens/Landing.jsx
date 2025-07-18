@@ -28,7 +28,7 @@ const Landing = () => {
     try {
       if (currState === "Login") {
         const res = await axios.post(
-          `http://localhost:8080/user/login`,
+          `https://real-time-chat-app-backend-mzzm.onrender.com/user/login`,
           {
             email: form.email,
             password: form.password,
@@ -51,7 +51,7 @@ const Landing = () => {
       } else {
         // Sign Up
         const res = await axios.post(
-          `http://localhost:8080/user/register`,
+          `https://real-time-chat-app-backend-mzzm.onrender.com/user/register`,
           form
         );
         if (!res.data.success) {
