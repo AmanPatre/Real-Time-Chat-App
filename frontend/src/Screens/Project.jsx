@@ -97,7 +97,7 @@ const Project = () => {
       try {
         const responses = await Promise.all(
           userIds.map((id) =>
-            axios.post(`${import.meta.env.VITE_API_URL}/user/profile`, { id })
+            axios.post(`http://localhost:8080/user/profile`, { id })
           )
         );
         setUsers(responses.map((res) => res.data.data));
@@ -145,7 +145,7 @@ const Project = () => {
 
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/project/addFiletree`,
+        `http://localhost:8080/project/addFiletree`,
         {
           proj_id: projectId,
           filetree: ft,

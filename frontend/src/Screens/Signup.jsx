@@ -18,7 +18,7 @@ const Signup = () => {
 
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/user/signup`,
+        `http://localhost:8080/user/signup`,
         form
       );
       if (!res.data.success) {

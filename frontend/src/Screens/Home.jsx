@@ -18,7 +18,7 @@ const Home = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/project/createProject`,
+        `http://localhost:8080/project/createProject`,
         { name: pname },
         {
           headers: {
@@ -41,7 +41,7 @@ const Home = () => {
 
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/project/adduser`,
+        `http://localhost:8080/project/adduser`,
         { proj_id: pid },
         {
           headers: {
@@ -63,7 +63,7 @@ const Home = () => {
   const getProjects = async () => {
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/project/getproject`,
+        `http://localhost:8080/project/getproject`,
         {},
         {
           headers: {

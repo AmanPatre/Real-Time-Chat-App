@@ -28,7 +28,7 @@ const Landing = () => {
     try {
       if (currState === "Login") {
         const res = await axios.post(
-          `${import.meta.env.VITE_API_URL}/user/login`,
+          `http://localhost:8080/user/login`,
           {
             email: form.email,
             password: form.password,
@@ -51,7 +51,7 @@ const Landing = () => {
       } else {
         // Sign Up
         const res = await axios.post(
-          `${import.meta.env.VITE_API_URL}/user/register`,
+          `http://localhost:8080/user/register`,
           form
         );
         if (!res.data.success) {
