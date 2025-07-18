@@ -4,7 +4,7 @@ import Landing from '../Screens/Landing'
 import Signup from '../Screens/Signup'
 import Home from '../Screens/Home'
 import { ToastContainer } from 'react-toastify';
-import Project from '../Screens/project'
+import Project from '../Screens/Project'
 import { useState } from 'react'
 
 const Approute = () => {
