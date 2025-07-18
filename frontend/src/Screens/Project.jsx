@@ -97,7 +97,7 @@ const Project = () => {
       try {
         const responses = await Promise.all(
           userIds.map((id) =>
-            axios.post("http://localhost:8080/user/profile", { id })
+            axios.post(`${import.meta.env.VITE_API_URL}/user/profile`, { id })
           )
         );
         setUsers(responses.map((res) => res.data.data));
@@ -145,7 +145,7 @@ const Project = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8080/project/addFiletree",
+        `${import.meta.env.VITE_API_URL}/project/addFiletree`,
         {
           proj_id: projectId,
           filetree: ft,
@@ -487,21 +487,22 @@ const Project = () => {
               }}
             >
               <div className="address-bar w-full bg-[#252526] border-b border-gray-700 p-2 flex-col justify-between items-center gap-2">
-                <div><input
-                  onChange={(e) => setIframeURL(e.target.value)}
-                  type="text"
-                  value={iframeURL}
-                  className="bg-[#1e1e1e] text-gray-300 border border-gray-600 rounded px-2 py-1 flex-1 focus:outline-none focus:border-[#1cdfabce] text-xs sm:text-sm w-[50%]"
-                  placeholder="Preview URL"
-                />
+                <div>
+                  <input
+                    onChange={(e) => setIframeURL(e.target.value)}
+                    type="text"
+                    value={iframeURL}
+                    className="bg-[#1e1e1e] text-gray-300 border border-gray-600 rounded px-2 py-1 flex-1 focus:outline-none focus:border-[#1cdfabce] text-xs sm:text-sm w-[50%]"
+                    placeholder="Preview URL"
+                  />
                 </div>
                 <div>
-                <button
-                  onClick={() => setIframeExpanded(true)}
-                  className="bg-[#1ce3ad] text-black px-2 py-1 rounded hover:bg-[#00cf98d9] transition text-xs"
-                >
-                  Max
-                </button>
+                  <button
+                    onClick={() => setIframeExpanded(true)}
+                    className="bg-[#1ce3ad] text-black px-2 py-1 rounded hover:bg-[#00cf98d9] transition text-xs"
+                  >
+                    Max
+                  </button>
                 </div>
               </div>
               <iframe

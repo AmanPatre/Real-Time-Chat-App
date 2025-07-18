@@ -4,38 +4,35 @@ import { toast } from "react-toastify";
 import { useUser } from "../context/userContext";
 import { useNavigate } from "react-router-dom";
 
-
 const Signup = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
-  const {setUser} = useUser();
+  const { setUser } = useUser();
   const Navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-     
-    try{
-        const res = await axios.post('http://localhost:8080/user/signup' , form);
-        if(!res.data.success){
-            toast.error(res.data.message)
-            return ;
-        }
 
-        toast.success(res.data.message);
-        localStorage.setItem("token" , res.data.token);
-        setUser(res.data.data);
-         localStorage.setItem("user", JSON.stringify(res.data.data));
-        Navigate("/");
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/user/signup`,
+        form
+      );
+      if (!res.data.success) {
+        toast.error(res.data.message);
+        return;
+      }
 
-
-    }
-    catch(error){
-     
-        console.log(error)
-
+      toast.success(res.data.message);
+      localStorage.setItem("token", res.data.token);
+      setUser(res.data.data);
+      localStorage.setItem("user", JSON.stringify(res.data.data));
+      Navigate("/");
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -96,7 +93,7 @@ const Signup = () => {
           </button>
         </form>
         <p className="text-gray-400 mt-6 text-center">
-          Already Have an Account ? {" "}
+          Already Have an Account ?{" "}
           <a href="/login" className="text-blue-400 hover:underline">
             Login
           </a>

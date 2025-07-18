@@ -18,7 +18,7 @@ const Home = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:8080/project/createProject",
+        `${import.meta.env.VITE_API_URL}/project/createProject`,
         { name: pname },
         {
           headers: {
@@ -34,7 +34,6 @@ const Home = () => {
       console.log(error);
     }
     window.location.reload();
-
   };
 
   const handleSubmitpid = async (e) => {
@@ -42,7 +41,7 @@ const Home = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8080/project/adduser",
+        `${import.meta.env.VITE_API_URL}/project/adduser`,
         { proj_id: pid },
         {
           headers: {
@@ -64,7 +63,7 @@ const Home = () => {
   const getProjects = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:8080/project/getproject",
+        `${import.meta.env.VITE_API_URL}/project/getproject`,
         {},
         {
           headers: {
@@ -92,7 +91,7 @@ const Home = () => {
         {/* Header */}
         <div className="flex justify-between items-center sm:mb-8 sm:px-4 ">
           <h1 className="text-xs md:text-base px-2 py-1   font-bold text-white tracking-tight">
-           Your Projects
+            Your Projects
           </h1>
           <div className="flex gap-4">
             <button

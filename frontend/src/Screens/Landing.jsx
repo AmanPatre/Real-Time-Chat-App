@@ -27,10 +27,13 @@ const Landing = () => {
     e.preventDefault();
     try {
       if (currState === "Login") {
-        const res = await axios.post("http://localhost:8080/user/login", {
-          email: form.email,
-          password: form.password,
-        });
+        const res = await axios.post(
+          `${import.meta.env.VITE_API_URL}/user/login`,
+          {
+            email: form.email,
+            password: form.password,
+          }
+        );
         if (!res.data.success) {
           toast.error(res.data.message);
           return;
@@ -48,7 +51,7 @@ const Landing = () => {
       } else {
         // Sign Up
         const res = await axios.post(
-          "http://localhost:8080/user/register",
+          `${import.meta.env.VITE_API_URL}/user/register`,
           form
         );
         if (!res.data.success) {
