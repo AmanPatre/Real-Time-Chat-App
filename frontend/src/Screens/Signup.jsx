@@ -18,7 +18,7 @@ const Signup = () => {
 
     try {
       const res = await axios.post(
-        `http://localhost:8080/user/signup`,
+        `https://real-time-chat-app-backend-mzzm.onrender.com/user/signup`,
         form
       );
       if (!res.data.success) {
